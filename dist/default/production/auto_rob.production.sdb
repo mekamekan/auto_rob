@@ -3,25 +3,27 @@
 [d edition pro ]
 [d chip 16F1778 ]
 [d frameptr 6 ]
+"4 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\flge.c
+[v ___flge __flge `(b  1 e 0 0 ]
+"43 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
 "10 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"8 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
 "15 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"46 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
+"10 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+"50 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
 [v _main main `(v  1 e 1 0 ]
-"130
-[v _motorA motorA `(v  1 e 1 0 ]
-"161
-[v _motorB motorB `(v  1 e 1 0 ]
-"192
-[v _motorC motorC `(v  1 e 1 0 ]
-"223
-[v _motorD motorD `(v  1 e 1 0 ]
-"254
-[v _PushSwitchRead PushSwitchRead `(ui  1 e 2 0 ]
-[s S247 . 1 `uc 1 RA0 1 0 :1:0 
+"300
+[v _Servo5 Servo5 `(v  1 e 1 0 ]
+[s S243 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -31,8 +33,8 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "447 D:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1778.h
-[u S256 . 1 `S247 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES256  1 e 1 @12 ]
+[u S252 . 1 `S243 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES252  1 e 1 @12 ]
 "1636
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1698
@@ -60,7 +62,7 @@
 [v _OSCCON OSCCON `VEuc  1 e 1 @155 ]
 "2674
 [v _LATA LATA `VEuc  1 e 1 @268 ]
-[s S202 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S198 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -70,13 +72,13 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "2691
-[u S211 . 1 `S202 1 . 1 0 ]
-[v _LATAbits LATAbits `VES211  1 e 1 @268 ]
+[u S207 . 1 `S198 1 . 1 0 ]
+[v _LATAbits LATAbits `VES207  1 e 1 @268 ]
 "2736
 [v _LATB LATB `VEuc  1 e 1 @269 ]
 "2798
 [v _LATC LATC `VEuc  1 e 1 @270 ]
-[s S225 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S221 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -86,8 +88,8 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "2815
-[u S234 . 1 `S225 1 . 1 0 ]
-[v _LATCbits LATCbits `VES234  1 e 1 @270 ]
+[u S230 . 1 `S221 1 . 1 0 ]
+[v _LATCbits LATCbits `VES230  1 e 1 @270 ]
 "3723
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
 "3773
@@ -173,6 +175,53 @@
 [v _PWM9DCH PWM9DCH `VEuc  1 e 1 @1563 ]
 "18832
 [v _PWM9CON PWM9CON `VEuc  1 e 1 @1564 ]
+"27308
+[v _PWM5PHL PWM5PHL `VEuc  1 e 1 @3473 ]
+"27386
+[v _PWM5PHH PWM5PHH `VEuc  1 e 1 @3474 ]
+"27471
+[v _PWM5DCL PWM5DCL `VEuc  1 e 1 @3475 ]
+"27549
+[v _PWM5DCH PWM5DCH `VEuc  1 e 1 @3476 ]
+"27634
+[v _PWM5PRL PWM5PRL `VEuc  1 e 1 @3477 ]
+"27712
+[v _PWM5PRH PWM5PRH `VEuc  1 e 1 @3478 ]
+"27797
+[v _PWM5OFL PWM5OFL `VEuc  1 e 1 @3479 ]
+"27875
+[v _PWM5OFH PWM5OFH `VEuc  1 e 1 @3480 ]
+"27960
+[v _PWM5TMRL PWM5TMRL `VEuc  1 e 1 @3481 ]
+"28038
+[v _PWM5TMRH PWM5TMRH `VEuc  1 e 1 @3482 ]
+"28116
+[v _PWM5CON PWM5CON `VEuc  1 e 1 @3483 ]
+"28466
+[v _PWM5CLKCON PWM5CLKCON `VEuc  1 e 1 @3486 ]
+"28586
+[v _PWM5LDCON PWM5LDCON `VEuc  1 e 1 @3487 ]
+[s S264 . 1 `uc 1 LDS 1 0 :2:0 
+`uc 1 . 1 0 :4:2 
+`uc 1 LDT 1 0 :1:6 
+`uc 1 LDA 1 0 :1:7 
+]
+"28613
+[s S269 . 1 `uc 1 PWM5LDS0 1 0 :1:0 
+`uc 1 PWM5LDS1 1 0 :1:1 
+]
+[s S272 . 1 `uc 1 PWM5LDS 1 0 :2:0 
+`uc 1 . 1 0 :4:2 
+`uc 1 PWM5LDM 1 0 :1:6 
+`uc 1 PWM5LD 1 0 :1:7 
+]
+[s S277 . 1 `uc 1 LDS0 1 0 :1:0 
+`uc 1 LDS1 1 0 :1:1 
+]
+[u S280 . 1 `S264 1 . 1 0 `S269 1 . 1 0 `S272 1 . 1 0 `S277 1 . 1 0 ]
+[v _PWM5LDCONbits PWM5LDCONbits `VES280  1 e 1 @3487 ]
+"28668
+[v _PWM5OFCON PWM5OFCON `VEuc  1 e 1 @3488 ]
 "32822
 [v _RA4PPS RA4PPS `VEuc  1 e 1 @3732 ]
 "32842
@@ -189,51 +238,130 @@
 [v _RC2PPS RC2PPS `VEuc  1 e 1 @3746 ]
 "33122
 [v _RC3PPS RC3PPS `VEuc  1 e 1 @3747 ]
-"46 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
+"33162
+[v _RC5PPS RC5PPS `VEuc  1 e 1 @3749 ]
+"50 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"115
-[v main@i_287 i `i  1 a 2 2 ]
-"104
-[v main@i i `i  1 a 2 0 ]
-"128
+"151
+[v main@i_321 i `i  1 a 2 71 ]
+"147
+[v main@i i `i  1 a 2 69 ]
+"158
 } 0
-"223
-[v _motorD motorD `(v  1 e 1 0 ]
+"10 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 {
-[v motorD@duty duty `i  1 p 2 6 ]
-"252
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 10 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 9 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 0 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 8 ]
+"44
 } 0
-"192
-[v _motorC motorC `(v  1 e 1 0 ]
+"300 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
+[v _Servo5 Servo5 `(v  1 e 1 0 ]
 {
-[v motorC@duty duty `i  1 p 2 6 ]
-"221
+"302
+[v Servo5@duty duty `d  1 a 4 63 ]
+"300
+[v Servo5@angle angle `d  1 p 4 59 ]
+"315
 } 0
-"161
-[v _motorB motorB `(v  1 e 1 0 ]
+"43 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
 {
-[v motorB@duty duty `i  1 p 2 6 ]
-"190
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 9 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 8 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 0 ]
+"70
 } 0
-"130
-[v _motorA motorA `(v  1 e 1 0 ]
+"8 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[v motorA@duty duty `i  1 p 2 6 ]
-"159
+[s S530 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+"13
+[s S535 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S538 . 4 `l 1 i 4 0 `d 1 f 4 0 `S530 1 fAsBytes 4 0 `S535 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S538  1 a 4 33 ]
+"12
+[v ___flmul@grs grs `ul  1 a 4 27 ]
+[s S607 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+"14
+[u S610 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S607 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S610  1 a 2 37 ]
+"10
+[v ___flmul@bexp bexp `uc  1 a 1 32 ]
+"11
+[v ___flmul@aexp aexp `uc  1 a 1 31 ]
+"9
+[v ___flmul@sign sign `uc  1 a 1 26 ]
+"8
+[v ___flmul@b b `d  1 p 4 13 ]
+[v ___flmul@a a `d  1 p 4 17 ]
+"205
 } 0
-"15 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+{
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 6 ]
+"5
+[v __Umul8_16@product product `ui  1 a 2 4 ]
+"4
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 0 ]
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 8 ]
+"60
+} 0
+"4 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\flge.c
+[v ___flge __flge `(b  1 e 0 0 ]
+{
+[v ___flge@ff1 ff1 `d  1 p 4 0 ]
+[v ___flge@ff2 ff2 `d  1 p 4 4 ]
+"19
+} 0
+"8 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+{
+"21
+[v ___fldiv@grs grs `ul  1 a 4 7 ]
+"22
+[v ___fldiv@rem rem `ul  1 a 4 0 ]
+"20
+[v ___fldiv@new_exp new_exp `i  1 a 2 5 ]
+"19
+[v ___fldiv@aexp aexp `uc  1 a 1 12 ]
+"18
+[v ___fldiv@bexp bexp `uc  1 a 1 11 ]
+"16
+[v ___fldiv@sign sign `uc  1 a 1 4 ]
+"8
+[v ___fldiv@a a `d  1 p 4 0 ]
+[v ___fldiv@b b `d  1 p 4 4 ]
+"185
+} 0
+"10 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
 {
 "17
-[v ___wmul@product product `ui  1 a 2 4 ]
+[v ___fladd@grs grs `uc  1 a 1 58 ]
 "15
-[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
-"53
-} 0
-"254 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
-[v _PushSwitchRead PushSwitchRead `(ui  1 e 2 0 ]
-{
-"256
+[v ___fladd@bexp bexp `uc  1 a 1 57 ]
+"16
+[v ___fladd@aexp aexp `uc  1 a 1 56 ]
+"13
+[v ___fladd@signs signs `uc  1 a 1 55 ]
+"10
+[v ___fladd@b b `d  1 p 4 39 ]
+[v ___fladd@a a `d  1 p 4 43 ]
+"237
 } 0

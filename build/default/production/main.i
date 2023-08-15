@@ -19489,6 +19489,10 @@ void motorB(int duty);
 void motorC(int duty);
 void motorD(int duty);
 unsigned int PushSwitchRead(void);
+unsigned int switchA_Read(void);
+unsigned int switchB_Read(void);
+unsigned int switchC_Read(void);
+void Servo5(double angle);
 
 
 void main(void) {
@@ -19546,29 +19550,31 @@ void main(void) {
     CCPR1L = 0x00;
 
 
+    RC5PPS = 0b011101;
+    PWM5CON = 0b10000000;
+    PWM5CLKCON = 0b01000000;
+    PWM5LDCON = 0x00;
+    PWM5OFCON = 0x00;
+    PWM5PHH = 0x00;
+    PWM5PHL = 0x00;
+    PWM5DCH = (2899 >> 8) & 0x00FF;
+    PWM5DCL = 2899 & 0x00FF;
+    PWM5PRH = (39999 >> 8) & 0x00FF;
+    PWM5PRL = 39999 & 0x00FF;
+    PWM5OFH = 0x00;
+    PWM5OFL = 0x00;
+    PWM5TMRH = 0x00;
+    PWM5TMRL = 0x00;
 
     while(1){
-
-        for(int i = -600; i <= 600; i++){
-
-            motorA(i);
-            motorB(i);
-            if(PushSwitchRead()){
-                motorD(i);
-                motorC(i);
-            }
-            else;
-            _delay((unsigned long)((10)*(32000000/4000.0)));
+# 147 "main.c"
+        for(int i = 0; i <= 180; i++){
+            Servo5(i);
+            _delay((unsigned long)((100)*(32000000/4000.0)));
         }
-        for(int i = 600; i >= -600; i--){
-            motorA(i);
-            motorB(i);
-            if(PushSwitchRead()){
-                motorD(i);
-                motorC(i);
-            }
-            else;
-            _delay((unsigned long)((10)*(32000000/4000.0)));
+        for(int i = 180; i >= 0; i--){
+            Servo5(i);
+            _delay((unsigned long)((100)*(32000000/4000.0)));
         }
 
     }
@@ -19701,4 +19707,33 @@ void motorD(int duty){
 
 unsigned int PushSwitchRead(void){
     return PORTAbits.RA3;
+}
+
+unsigned int switchA_Read(void){
+    return PORTAbits.RA0;
+}
+
+unsigned int switchB_Read(void){
+    return PORTAbits.RA1;
+}
+
+unsigned int switchC_Read(void){
+    return PORTAbits.RA2;
+}
+
+void Servo5(double angle){
+
+    double duty;
+
+    angle > 180 ? (angle = 180) : angle;
+    angle < 0 ? (angle = 0) : angle;
+
+    duty = (3800 * (angle / 180)) + 999;
+
+
+    PWM5DCH = ((int)duty >> 8) & 0x00FF;
+    PWM5DCL = (int)duty & 0x00FF;
+    PWM5LDCONbits.LDA = 1;
+
+    return;
 }
