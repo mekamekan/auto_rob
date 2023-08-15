@@ -19,11 +19,13 @@
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "10 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-"50 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
+"51 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
 [v _main main `(v  1 e 1 0 ]
-"300
+"332
 [v _Servo5 Servo5 `(v  1 e 1 0 ]
-[s S243 . 1 `uc 1 RA0 1 0 :1:0 
+"349
+[v _Servo12 Servo12 `(v  1 e 1 0 ]
+[s S263 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -33,8 +35,8 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "447 D:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1778.h
-[u S252 . 1 `S243 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES252  1 e 1 @12 ]
+[u S272 . 1 `S263 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES272  1 e 1 @12 ]
 "1636
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1698
@@ -62,7 +64,7 @@
 [v _OSCCON OSCCON `VEuc  1 e 1 @155 ]
 "2674
 [v _LATA LATA `VEuc  1 e 1 @268 ]
-[s S198 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S218 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -72,13 +74,13 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "2691
-[u S207 . 1 `S198 1 . 1 0 ]
-[v _LATAbits LATAbits `VES207  1 e 1 @268 ]
+[u S227 . 1 `S218 1 . 1 0 ]
+[v _LATAbits LATAbits `VES227  1 e 1 @268 ]
 "2736
 [v _LATB LATB `VEuc  1 e 1 @269 ]
 "2798
 [v _LATC LATC `VEuc  1 e 1 @270 ]
-[s S221 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S241 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -88,8 +90,8 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "2815
-[u S230 . 1 `S221 1 . 1 0 ]
-[v _LATCbits LATCbits `VES230  1 e 1 @270 ]
+[u S250 . 1 `S241 1 . 1 0 ]
+[v _LATCbits LATCbits `VES250  1 e 1 @270 ]
 "3723
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
 "3773
@@ -201,27 +203,66 @@
 [v _PWM5CLKCON PWM5CLKCON `VEuc  1 e 1 @3486 ]
 "28586
 [v _PWM5LDCON PWM5LDCON `VEuc  1 e 1 @3487 ]
-[s S264 . 1 `uc 1 LDS 1 0 :2:0 
+[s S284 . 1 `uc 1 LDS 1 0 :2:0 
 `uc 1 . 1 0 :4:2 
 `uc 1 LDT 1 0 :1:6 
 `uc 1 LDA 1 0 :1:7 
 ]
 "28613
-[s S269 . 1 `uc 1 PWM5LDS0 1 0 :1:0 
+[s S289 . 1 `uc 1 PWM5LDS0 1 0 :1:0 
 `uc 1 PWM5LDS1 1 0 :1:1 
 ]
-[s S272 . 1 `uc 1 PWM5LDS 1 0 :2:0 
+[s S292 . 1 `uc 1 PWM5LDS 1 0 :2:0 
 `uc 1 . 1 0 :4:2 
 `uc 1 PWM5LDM 1 0 :1:6 
 `uc 1 PWM5LD 1 0 :1:7 
 ]
-[s S277 . 1 `uc 1 LDS0 1 0 :1:0 
+[s S297 . 1 `uc 1 LDS0 1 0 :1:0 
 `uc 1 LDS1 1 0 :1:1 
 ]
-[u S280 . 1 `S264 1 . 1 0 `S269 1 . 1 0 `S272 1 . 1 0 `S277 1 . 1 0 ]
-[v _PWM5LDCONbits PWM5LDCONbits `VES280  1 e 1 @3487 ]
+[u S300 . 1 `S284 1 . 1 0 `S289 1 . 1 0 `S292 1 . 1 0 `S297 1 . 1 0 ]
+[v _PWM5LDCONbits PWM5LDCONbits `VES300  1 e 1 @3487 ]
 "28668
 [v _PWM5OFCON PWM5OFCON `VEuc  1 e 1 @3488 ]
+"28783
+[v _PWM6PHL PWM6PHL `VEuc  1 e 1 @3489 ]
+"28861
+[v _PWM6PHH PWM6PHH `VEuc  1 e 1 @3490 ]
+"28946
+[v _PWM6DCL PWM6DCL `VEuc  1 e 1 @3491 ]
+"29024
+[v _PWM6DCH PWM6DCH `VEuc  1 e 1 @3492 ]
+"29109
+[v _PWM6PRL PWM6PRL `VEuc  1 e 1 @3493 ]
+"29187
+[v _PWM6PRH PWM6PRH `VEuc  1 e 1 @3494 ]
+"29272
+[v _PWM6OFL PWM6OFL `VEuc  1 e 1 @3495 ]
+"29350
+[v _PWM6OFH PWM6OFH `VEuc  1 e 1 @3496 ]
+"29435
+[v _PWM6TMRL PWM6TMRL `VEuc  1 e 1 @3497 ]
+"29513
+[v _PWM6TMRH PWM6TMRH `VEuc  1 e 1 @3498 ]
+"29591
+[v _PWM6CON PWM6CON `VEuc  1 e 1 @3499 ]
+"29941
+[v _PWM6CLKCON PWM6CLKCON `VEuc  1 e 1 @3502 ]
+"30061
+[v _PWM6LDCON PWM6LDCON `VEuc  1 e 1 @3503 ]
+"30088
+[s S327 . 1 `uc 1 PWM6LDS0 1 0 :1:0 
+`uc 1 PWM6LDS1 1 0 :1:1 
+]
+[s S330 . 1 `uc 1 PWM6LDS 1 0 :2:0 
+`uc 1 . 1 0 :4:2 
+`uc 1 PWM6LDM 1 0 :1:6 
+`uc 1 PWM6LD 1 0 :1:7 
+]
+[u S338 . 1 `S284 1 . 1 0 `S327 1 . 1 0 `S330 1 . 1 0 `S297 1 . 1 0 ]
+[v _PWM6LDCONbits PWM6LDCONbits `VES338  1 e 1 @3503 ]
+"30143
+[v _PWM6OFCON PWM6OFCON `VEuc  1 e 1 @3504 ]
 "32822
 [v _RA4PPS RA4PPS `VEuc  1 e 1 @3732 ]
 "32842
@@ -238,16 +279,18 @@
 [v _RC2PPS RC2PPS `VEuc  1 e 1 @3746 ]
 "33122
 [v _RC3PPS RC3PPS `VEuc  1 e 1 @3747 ]
+"33142
+[v _RC4PPS RC4PPS `VEuc  1 e 1 @3748 ]
 "33162
 [v _RC5PPS RC5PPS `VEuc  1 e 1 @3749 ]
-"50 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
+"51 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"151
-[v main@i_321 i `i  1 a 2 71 ]
-"147
+"182
+[v main@i_379 i `i  1 a 2 71 ]
+"177
 [v main@i i `i  1 a 2 69 ]
-"158
+"190
 } 0
 "10 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -264,14 +307,23 @@
 [v ___xxtofl@sign sign `uc  1 a 1 8 ]
 "44
 } 0
-"300 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
+"332 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
 [v _Servo5 Servo5 `(v  1 e 1 0 ]
 {
-"302
+"334
 [v Servo5@duty duty `d  1 a 4 63 ]
-"300
+"332
 [v Servo5@angle angle `d  1 p 4 59 ]
-"315
+"347
+} 0
+"349
+[v _Servo12 Servo12 `(v  1 e 1 0 ]
+{
+"351
+[v Servo12@duty duty `d  1 a 4 63 ]
+"349
+[v Servo12@angle angle `d  1 p 4 59 ]
+"363
 } 0
 "43 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
@@ -286,17 +338,17 @@
 "8 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S530 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S595 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S535 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S538 . 4 `l 1 i 4 0 `d 1 f 4 0 `S530 1 fAsBytes 4 0 `S535 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S538  1 a 4 33 ]
+[s S600 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S603 . 4 `l 1 i 4 0 `d 1 f 4 0 `S595 1 fAsBytes 4 0 `S600 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S603  1 a 4 33 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 27 ]
-[s S607 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S672 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S610 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S607 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S610  1 a 2 37 ]
+[u S675 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S672 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S675  1 a 2 37 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 32 ]
 "11

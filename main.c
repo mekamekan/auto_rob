@@ -45,6 +45,7 @@ unsigned int switchA_Read(void);
 unsigned int switchB_Read(void);
 unsigned int switchC_Read(void);
 void Servo5(double angle);
+void Servo12(double angle);
 
 
 void main(void) {
@@ -118,38 +119,69 @@ void main(void) {
     PWM5TMRH = 0x00;
     PWM5TMRL = 0x00;
     
+    //PWM6(16bit)設定
+    __delay_ms(500);
+    RC4PPS = 0b011110;
+    PWM6CON = 0b10000000;
+    PWM6CLKCON = 0b01000000;
+    PWM6LDCON = 0x00;
+    PWM6OFCON = 0x00;
+    PWM6PHH = 0x00;
+    PWM6PHL = 0x00;
+    PWM6DCH = (2999 >> 8) & 0x00FF;
+    PWM6DCL = 2999 & 0x00FF;
+    PWM6PRH = (39999 >> 8) & 0x00FF;
+    PWM6PRL = 39999 & 0x00FF;
+    PWM6OFH = 0x00;
+    PWM6OFL = 0x00;
+    PWM6TMRH = 0x00;
+    PWM6TMRL = 0x00;
+    
     while(1){
         
         //モータ＆スイッチテスト用プログラム
         /*for(int i = -600; i <= 600; i++){
-            
-            motorA(i);
-            motorB(i);
+ 
             if(switchC_Read()){
+                motorA(i);
+                motorB(i);
                 motorD(i);
                 motorC(i);
             }
-            else;
+            else{
+                motorA(0);
+                motorB(0);
+                motorD(0);
+                motorC(0);
+            }
             __delay_ms(10);
         }
         for(int i = 600; i >= -600; i--){
-            motorA(i);
-            motorB(i);
+            
             if(PushSwitchRead()){
+                motorA(i);
+                motorB(i);
                 motorD(i);
                 motorC(i);
             }
-            else;
+            else{
+                motorA(0);
+                motorB(0);
+                motorD(0);
+                motorC(0);
+            }
             __delay_ms(10);
         }*/
         
         //サーボテスト用プログラム
-        for(int i = 0; i <= 180; i++){
+        for(int i = 0; i <= 270; i++){
             Servo5(i);
+            Servo12(i);
             __delay_ms(100);
         }
-        for(int i = 180; i >= 0; i--){
+        for(int i = 270; i >= 0; i--){
             Servo5(i);
+            Servo12(i);
             __delay_ms(100);
         }
           
@@ -310,6 +342,22 @@ void Servo5(double angle){
     PWM5DCH = ((int)duty >> 8) & 0x00FF;
     PWM5DCL = (int)duty & 0x00FF;
     PWM5LDCONbits.LDA = 1;
+    
+    return;
+}
+
+void Servo12(double angle){
+    
+    double duty;
+    
+    angle > 270 ? (angle = 270) : angle;
+    angle < 0 ? (angle = 0) : angle;
+    
+    duty = (3200 * (angle / 270)) + 1399;
+    
+    PWM6DCH = ((int)duty >> 8) & 0x00FF;
+    PWM6DCL = (int)duty & 0x00FF;
+    PWM6LDCONbits.LDA = 1;
     
     return;
 }
