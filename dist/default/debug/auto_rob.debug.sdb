@@ -17,13 +17,15 @@
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"58 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
+"59 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
 [v _main main `(v  1 e 1 0 ]
-"395
+"398
 [v _DataWrite DataWrite `(v  1 e 1 0 ]
-"410
+"406
+[v _DataRead DataRead `(v  1 e 1 0 ]
+"431
 [v _ISR ISR `II(v  1 e 1 0 ]
-[s S270 . 1 `uc 1 IOCIF 1 0 :1:0 
+[s S242 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 IOCIE 1 0 :1:3 
@@ -33,14 +35,14 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "375 D:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1778.h
-[s S279 . 1 `uc 1 . 1 0 :2:0 
+[s S251 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 T0IE 1 0 :1:5 
 ]
-[u S284 . 1 `S270 1 . 1 0 `S279 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES284  1 e 1 @11 ]
-[s S353 . 1 `uc 1 RA0 1 0 :1:0 
+[u S256 . 1 `S242 1 . 1 0 `S251 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES256  1 e 1 @11 ]
+[s S329 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -50,8 +52,8 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "447
-[u S362 . 1 `S353 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES362  1 e 1 @12 ]
+[u S338 . 1 `S329 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES338  1 e 1 @12 ]
 [s S214 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
@@ -73,21 +75,6 @@
 [v _TRISB TRISB `VEuc  1 e 1 @141 ]
 "1760
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
-[s S242 . 1 `uc 1 TMR1IE 1 0 :1:0 
-`uc 1 TMR2IE 1 0 :1:1 
-`uc 1 CCP1IE 1 0 :1:2 
-`uc 1 SSP1IE 1 0 :1:3 
-`uc 1 TXIE 1 0 :1:4 
-`uc 1 RCIE 1 0 :1:5 
-`uc 1 ADIE 1 0 :1:6 
-`uc 1 TMR1GIE 1 0 :1:7 
-]
-"1864
-[s S251 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 CCPIE 1 0 :1:2 
-]
-[u S254 . 1 `S242 1 . 1 0 `S251 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES254  1 e 1 @145 ]
 [s S32 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 TMR0SE 1 0 :1:4 
@@ -109,7 +96,7 @@
 [v _OSCCON OSCCON `VEuc  1 e 1 @155 ]
 "2674
 [v _LATA LATA `VEuc  1 e 1 @268 ]
-[s S308 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S284 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -119,13 +106,13 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "2691
-[u S317 . 1 `S308 1 . 1 0 ]
-[v _LATAbits LATAbits `VES317  1 e 1 @268 ]
+[u S293 . 1 `S284 1 . 1 0 ]
+[v _LATAbits LATAbits `VES293  1 e 1 @268 ]
 "2736
 [v _LATB LATB `VEuc  1 e 1 @269 ]
 "2798
 [v _LATC LATC `VEuc  1 e 1 @270 ]
-[s S331 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S307 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -135,8 +122,8 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "2815
-[u S340 . 1 `S331 1 . 1 0 ]
-[v _LATCbits LATCbits `VES340  1 e 1 @270 ]
+[u S316 . 1 `S307 1 . 1 0 ]
+[v _LATCbits LATCbits `VES316  1 e 1 @270 ]
 "3723
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
 "3773
@@ -153,7 +140,7 @@
 [v _SP1BRGH SP1BRGH `VEuc  1 e 1 @412 ]
 "4304
 [v _RC1STA RC1STA `VEuc  1 e 1 @413 ]
-[s S451 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S427 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -163,8 +150,8 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "4330
-[u S460 . 1 `S451 1 . 1 0 ]
-[v _RC1STAbits RC1STAbits `VES460  1 e 1 @413 ]
+[u S436 . 1 `S427 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES436  1 e 1 @413 ]
 "4484
 [v _TX1STA TX1STA `VEuc  1 e 1 @414 ]
 "4664
@@ -274,25 +261,25 @@
 [v _PWM5CLKCON PWM5CLKCON `VEuc  1 e 1 @3486 ]
 "28586
 [v _PWM5LDCON PWM5LDCON `VEuc  1 e 1 @3487 ]
-[s S374 . 1 `uc 1 LDS 1 0 :2:0 
+[s S350 . 1 `uc 1 LDS 1 0 :2:0 
 `uc 1 . 1 0 :4:2 
 `uc 1 LDT 1 0 :1:6 
 `uc 1 LDA 1 0 :1:7 
 ]
 "28613
-[s S379 . 1 `uc 1 PWM5LDS0 1 0 :1:0 
+[s S355 . 1 `uc 1 PWM5LDS0 1 0 :1:0 
 `uc 1 PWM5LDS1 1 0 :1:1 
 ]
-[s S382 . 1 `uc 1 PWM5LDS 1 0 :2:0 
+[s S358 . 1 `uc 1 PWM5LDS 1 0 :2:0 
 `uc 1 . 1 0 :4:2 
 `uc 1 PWM5LDM 1 0 :1:6 
 `uc 1 PWM5LD 1 0 :1:7 
 ]
-[s S387 . 1 `uc 1 LDS0 1 0 :1:0 
+[s S363 . 1 `uc 1 LDS0 1 0 :1:0 
 `uc 1 LDS1 1 0 :1:1 
 ]
-[u S390 . 1 `S374 1 . 1 0 `S379 1 . 1 0 `S382 1 . 1 0 `S387 1 . 1 0 ]
-[v _PWM5LDCONbits PWM5LDCONbits `VES390  1 e 1 @3487 ]
+[u S366 . 1 `S350 1 . 1 0 `S355 1 . 1 0 `S358 1 . 1 0 `S363 1 . 1 0 ]
+[v _PWM5LDCONbits PWM5LDCONbits `VES366  1 e 1 @3487 ]
 "28668
 [v _PWM5OFCON PWM5OFCON `VEuc  1 e 1 @3488 ]
 "28783
@@ -322,16 +309,16 @@
 "30061
 [v _PWM6LDCON PWM6LDCON `VEuc  1 e 1 @3503 ]
 "30088
-[s S417 . 1 `uc 1 PWM6LDS0 1 0 :1:0 
+[s S393 . 1 `uc 1 PWM6LDS0 1 0 :1:0 
 `uc 1 PWM6LDS1 1 0 :1:1 
 ]
-[s S420 . 1 `uc 1 PWM6LDS 1 0 :2:0 
+[s S396 . 1 `uc 1 PWM6LDS 1 0 :2:0 
 `uc 1 . 1 0 :4:2 
 `uc 1 PWM6LDM 1 0 :1:6 
 `uc 1 PWM6LD 1 0 :1:7 
 ]
-[u S428 . 1 `S374 1 . 1 0 `S417 1 . 1 0 `S420 1 . 1 0 `S387 1 . 1 0 ]
-[v _PWM6LDCONbits PWM6LDCONbits `VES428  1 e 1 @3503 ]
+[u S404 . 1 `S350 1 . 1 0 `S393 1 . 1 0 `S396 1 . 1 0 `S363 1 . 1 0 ]
+[v _PWM6LDCONbits PWM6LDCONbits `VES404  1 e 1 @3503 ]
 "30143
 [v _PWM6OFCON PWM6OFCON `VEuc  1 e 1 @3504 ]
 "32702
@@ -358,29 +345,38 @@
 [v _RC4PPS RC4PPS `VEuc  1 e 1 @3748 ]
 "33162
 [v _RC5PPS RC5PPS `VEuc  1 e 1 @3749 ]
-"55 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
+"56 D:\Users\hirot\Desktop\PIC_documents\2023\auto_rob\main.c
 [v _g_ReadData g_ReadData `uc  1 e 1 0 ]
-"58
+"57
+[v _g_ReadStr g_ReadStr `[20]uc  1 e 20 0 ]
+"59
 [v _main main `(v  1 e 1 0 ]
 {
-"212
+"213
 [v main@i i `i  1 a 2 24 ]
-"162
+"163
 [v main@str str `[24]uc  1 a 24 0 ]
-"159
-[v main@F12352 F12352 `[24]uc  1 s 24 F12352 ]
-"220
+"160
+[v main@F12354 F12354 `[24]uc  1 s 24 F12354 ]
+"223
 } 0
-"395
+"398
 [v _DataWrite DataWrite `(v  1 e 1 0 ]
 {
 [v DataWrite@data data `uc  1 a 1 wreg ]
 [v DataWrite@data data `uc  1 a 1 wreg ]
 [v DataWrite@data data `uc  1 a 1 0 ]
-"401
+"404
 } 0
-"410
+"406
+[v _DataRead DataRead `(v  1 e 1 0 ]
+{
+"408
+[v DataRead@i i `i  1 a 2 0 ]
+"422
+} 0
+"431
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"422
+"443
 } 0

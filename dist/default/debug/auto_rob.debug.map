@@ -4,11 +4,11 @@ Linker command line:
 
 -W-3 \
   --edf=D:\Program Files\Microchip\xc8\v2.40\pic\dat\20220703182018_en.msgs \
-  -cn -h+dist/default/production\auto_rob.production.sym \
-  --cmf=dist/default/production\auto_rob.production.cmf -z -Q16F1778 \
-  -oC:\Users\hirot\AppData\Local\Temp\xcAsms8.4 --defsym=__MPLAB_BUILD=1 \
-  --fixupoverflow=error -Mdist/default/production/auto_rob.production.map \
-  --md=C:\Users\hirot\AppData\Local\Temp\xcAsms8.dat -E1 -ver=XC8 Compiler \
+  -cn -h+dist/default/debug\auto_rob.debug.sym \
+  --cmf=dist/default/debug\auto_rob.debug.cmf -z -Q16F1778 \
+  -oC:\Users\hirot\AppData\Local\Temp\xcAsmd4.4 --defsym=__MPLAB_BUILD=1 \
+  --fixupoverflow=error -Mdist/default/debug/auto_rob.debug.map \
+  --md=C:\Users\hirot\AppData\Local\Temp\xcAsmd4.dat -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ACODE=00h-07FFhx8 -ASTRCODE=00h-03FFFh -ASTRING=00h-0FFhx64 \
   -ACONST=00h-0FFhx64 -AENTRY=00h-0FFhx64 -ACOMMON=070h-07Fh \
   -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh -ABANK2=0120h-016Fh \
@@ -37,8 +37,8 @@ Linker command line:
   -AIDLOC=08000h-08003h -DIDLOC=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
   -DENTRY=2 -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE \
   -pcinit=CODE -pfunctab=ENTRY -k \
-  C:\Users\hirot\AppData\Local\Temp\xcAsms8.o \
-  dist/default/production\auto_rob.production.o 
+  C:\Users\hirot\AppData\Local\Temp\xcAsmd4.o \
+  dist/default/debug\auto_rob.debug.o 
 
 Object code version is 3.11
 
@@ -47,35 +47,40 @@ Machine type is 16F1778
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\hirot\AppData\Local\Temp\xcAsms8.o
-                end_init                             1E       1E        2        8       0
-                reset_vec                             0        0        2        0       0
+C:\Users\hirot\AppData\Local\Temp\xcAsmd4.o
+                end_init                             1D       1D        2        8       0
+                reset_vec                             0        0        3        0       0
                 config                             8007     8007        2        0       4
                 idloc                              8000     8000        4        0       5
-dist/default/production\auto_rob.production.o
-                cinit                                20       20       11        8       0
-                intentry                              4        4       1A        8       0
+dist/default/debug\auto_rob.debug.o
+                cinit                                1F       1F       19        8       0
+                intentry                              4        4       19        8       0
                 config                             8007     8007        2        0       4
                 idloc                              8000     8000        4        0       5
-                text1                               127      127        B        8       0
-                maintext                             31       31       DE        8       0
+                text2                               113      113       2B        8       0
+                text1                               156      156        B        8       0
+                maintext                             38       38       DB        8       0
                 cstackBANK0                          20       20       1A       20       1
-                cstackCOMMON                         70       70        3       70       1
-                inittext                            132      132        6        8       0
+                cstackCOMMON                         70       70        4       70       1
+                clrtext                             167      167        6        8       0
+                inittext                            161      161        6        8       0
                 dataBANK0                            3A       3A       18       20       1
-                bssBANK0                             52       52        1       20       1
-                idataBANK0                          10F      10F       18        8       0
+                bssBANK0                             52       52       14       20       1
+                bssCOMMON                            74       74        1       70       1
+                idataBANK0                          13E      13E       18        8       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
-                end_init                             1E       1E        2         0
-                cinit                                20       20       11         0
-                intentry                              4        4       1A         0
-                reset_vec                             0        0        2         0
-                text1                               127      127        B         0
-                maintext                             31       31       DE         0
-                inittext                            132      132        6         0
-                idataBANK0                          10F      10F       18         0
+                end_init                             1D       1D        2         0
+                cinit                                1F       1F       19         0
+                intentry                              4        4       19         0
+                reset_vec                             0        0        3         0
+                text2                               113      113       2B         0
+                text1                               156      156        B         0
+                maintext                             38       38       DB         0
+                clrtext                             167      167        6         0
+                inittext                            161      161        6         0
+                idataBANK0                          13E      13E       18         0
 
         CLASS   STRCODE        
 
@@ -86,12 +91,13 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   ENTRY          
 
         CLASS   COMMON         
-                cstackCOMMON                         70       70        3         1
+                cstackCOMMON                         70       70        4         1
+                bssCOMMON                            74       74        1         1
 
         CLASS   BANK0          
                 cstackBANK0                          20       20       1A         1
                 dataBANK0                            3A       3A       18         1
-                bssBANK0                             52       52        1         1
+                bssBANK0                             52       52       14         1
 
         CLASS   BANK1          
 
@@ -242,16 +248,16 @@ TOTAL           Name                               Link     Load   Length     Sp
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
-                reset_vec                      000000  000002  000002         0       0  CODE        2
-                intentry                       000004  000134  000138         8       0  CODE        2
-                cstackBANK0                    000020  000033  000053        20       1  BANK0       1
-                cstackCOMMON                   000070  000003  000073        70       1  COMMON      1
+                reset_vec                      000000  000003  000003         0       0  CODE        2
+                intentry                       000004  000169  00016D         8       0  CODE        2
+                cstackBANK0                    000020  000046  000066        20       1  BANK0       1
+                cstackCOMMON                   000070  000005  000075        70       1  COMMON      1
 
 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            00053-0006F              1D           1
+        BANK0            00066-0006F               A           1
         BANK1            000A0-000EF              50           1
         BANK10           00520-0056F              50           1
         BANK11           005A0-005EF              50           1
@@ -279,14 +285,14 @@ UNUSED ADDRESS RANGES
         BANK9            004A0-004EF              50           1
         BIGRAM           02000-023EF             3F0           1
                          02410-027EF             3E0
-        CODE             00002-00003               2           2
-                         00138-03FFF             800
-        COMMON           00073-0007D               B           1
-        CONST            00002-00003               2           2
-                         00138-03FFF             100
-        ENTRY            00002-00003               2           2
-                         00138-03FFF             100
-        RAM              00053-0006F              1D           1
+        CODE             00003-00003               1           2
+                         0016D-03FFF             800
+        COMMON           00075-0007D               9           1
+        CONST            00003-00003               1           2
+                         0016D-03FFF             100
+        ENTRY            00003-00003               1           2
+                         0016D-03FFF             100
+        RAM              00066-0006F               A           1
                          000A0-000EF              50
                          00120-0016F              50
                          001A0-001EF              50
@@ -344,13 +350,14 @@ UNUSED ADDRESS RANGES
         SFR7             00380-0039F              20           1
         SFR8             00400-0041F              20           1
         SFR9             00480-0049F              20           1
-        STRCODE          00002-00003               2           2
-                         00138-03FFF            3EC8
-        STRING           00002-00003               2           2
-                         00138-03FFF             100
+        STRCODE          00003-00003               1           2
+                         0016D-03FFF            3E93
+        STRING           00003-00003               1           2
+                         0016D-03FFF             100
 
                                   Symbol Table
 
+DataRead@i               cstackCOMMON 00070
 DataWrite@data           cstackCOMMON 00070
 _ANSELA                  (abs)        0018C
 _ANSELB                  (abs)        0018D
@@ -361,7 +368,8 @@ _CCPR1H                  (abs)        00292
 _CCPR1L                  (abs)        00291
 _CCPTMRS1bits            (abs)        0029E
 _CCPTMRS2bits            (abs)        0029F
-_DataWrite               text1        00127
+_DataRead                text2        00113
+_DataWrite               text1        00156
 _INTCONbits              (abs)        0000B
 _ISR                     intentry     00004
 _LATA                    (abs)        0010C
@@ -371,7 +379,6 @@ _LATC                    (abs)        0010E
 _LATCbits                (abs)        0010E
 _OPTION_REGbits          (abs)        00097
 _OSCCON                  (abs)        0009B
-_PIE1bits                (abs)        00091
 _PIR1bits                (abs)        00011
 _PORTAbits               (abs)        0000C
 _PWM3CON                 (abs)        00616
@@ -476,7 +483,8 @@ __Hbank8                 bank8        00000
 __Hbank9                 bank9        00000
 __Hbigram                bigram       00000
 __HbssBANK0              bssBANK0     00000
-__Hcinit                 cinit        00031
+__HbssCOMMON             bssCOMMON    00000
+__Hcinit                 cinit        00038
 __Hclrtext               clrtext      00000
 __Hcode                  code         00000
 __Hcommon                common       00000
@@ -485,18 +493,18 @@ __HcstackBANK0           cstackBANK0  00000
 __HcstackCOMMON          cstackCOMMON 00000
 __HdataBANK0             dataBANK0    00000
 __Heeprom_data           eeprom_data  00000
-__Hend_init              end_init     00020
+__Hend_init              end_init     0001F
 __Hfunctab               functab      00000
 __Hheap                  heap         00000
 __HidataBANK0            idataBANK0   00000
 __Hidloc                 idloc        08004
-__Hinit                  init         0001E
+__Hinit                  init         0001D
 __Hinittext              inittext     00000
-__Hintentry              intentry     0001E
+__Hintentry              intentry     0001D
 __Hmaintext              maintext     00000
 __Hpowerup               powerup      00000
 __Hram                   ram          00000
-__Hreset_vec             reset_vec    00002
+__Hreset_vec             reset_vec    00003
 __Hsfr0                  sfr0         00000
 __Hsfr1                  sfr1         00000
 __Hsfr10                 sfr10        00000
@@ -529,8 +537,8 @@ __Hsfr6                  sfr6         00000
 __Hsfr7                  sfr7         00000
 __Hsfr8                  sfr8         00000
 __Hsfr9                  sfr9         00000
-__Hspace_0               (abs)        00138
-__Hspace_1               (abs)        00073
+__Hspace_0               (abs)        0016D
+__Hspace_1               (abs)        00075
 __Hspace_2               (abs)        00000
 __Hspace_3               (abs)        00000
 __Hspace_4               (abs)        10010
@@ -572,7 +580,8 @@ __Lbank8                 bank8        00000
 __Lbank9                 bank9        00000
 __Lbigram                bigram       00000
 __LbssBANK0              bssBANK0     00000
-__Lcinit                 cinit        00020
+__LbssCOMMON             bssCOMMON    00000
+__Lcinit                 cinit        0001F
 __Lclrtext               clrtext      00000
 __Lcode                  code         00000
 __Lcommon                common       00000
@@ -581,12 +590,12 @@ __LcstackBANK0           cstackBANK0  00000
 __LcstackCOMMON          cstackCOMMON 00000
 __LdataBANK0             dataBANK0    00000
 __Leeprom_data           eeprom_data  00000
-__Lend_init              end_init     0001E
+__Lend_init              end_init     0001D
 __Lfunctab               functab      00000
 __Lheap                  heap         00000
 __LidataBANK0            idataBANK0   00000
 __Lidloc                 idloc        00000
-__Linit                  init         0001E
+__Linit                  init         0001D
 __Linittext              inittext     00000
 __Lintentry              intentry     00004
 __Lmaintext              maintext     00000
@@ -633,8 +642,8 @@ __Lspace_4               (abs)        00000
 __Lstack                 stack        00000
 __Lstrings               strings      00000
 __Ltext                  text         00000
-__S0                     (abs)        00138
-__S1                     (abs)        00073
+__S0                     (abs)        0016D
+__S1                     (abs)        00075
 ___heap_hi               (abs)        00000
 ___heap_lo               (abs)        00000
 ___int_sp                stack        00000
@@ -642,24 +651,29 @@ ___latbits               (abs)        00003
 ___sp                    stack        00000
 ___stackhi               (abs)        00000
 ___stacklo               (abs)        00000
-__end_of_DataWrite       text1        00132
-__end_of_ISR             intentry     0001E
-__end_of__initialization cinit        0002D
-__end_of_main            maintext     0010F
-__initialization         cinit        00020
+__end_of_DataRead        text2        0013E
+__end_of_DataWrite       text1        00161
+__end_of_ISR             intentry     0001D
+__end_of__initialization cinit        00034
+__end_of_main            maintext     00113
+__initialization         cinit        0001F
 __pbssBANK0              bssBANK0     00052
+__pbssCOMMON             bssCOMMON    00074
 __pcstackBANK0           cstackBANK0  00020
 __pcstackCOMMON          cstackCOMMON 00070
 __pdataBANK0             dataBANK0    0003A
-__pidataBANK0            idataBANK0   0010F
+__pidataBANK0            idataBANK0   0013E
 __pintentry              intentry     00004
-__pmaintext              maintext     00031
-__ptext1                 text1        00127
-_g_ReadData              bssBANK0     00052
-_main                    maintext     00031
+__pmaintext              maintext     00038
+__ptext1                 text1        00156
+__ptext2                 text2        00113
+_g_ReadData              bssCOMMON    00074
+_g_ReadStr               bssBANK0     00052
+_main                    maintext     00038
 btemp                    (abs)        0007E
-end_of_initialization    cinit        0002D
-init_ram                 inittext     00132
+clear_ram0               clrtext      00167
+end_of_initialization    cinit        00034
+init_ram                 inittext     00161
 int$flags                (abs)        0007E
 intlevel0                functab      00000
 intlevel1                functab      00000
@@ -667,12 +681,12 @@ intlevel2                functab      00000
 intlevel3                functab      00000
 intlevel4                functab      00000
 intlevel5                functab      00000
-main@F12352              dataBANK0    0003A
+main@F12354              dataBANK0    0003A
 main@i                   cstackBANK0  00038
 main@str                 cstackBANK0  00020
 reset_vec                reset_vec    00000
-start                    init         0001E
-start_initialization     cinit        00020
+start                    init         0001D
+start_initialization     cinit        0001F
 wtemp0                   (abs)        0007E
 
 
@@ -680,14 +694,15 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 shared
-		__initialization		CODE           	0020	0000	13
+		__initialization		CODE           	001F	0000	21
 
-shared estimated size: 13
+shared estimated size: 21
 
 main.c
-		_ISR           		CODE           	0004	0000	26
-		_main          		CODE           	0031	0000	222
-		_DataWrite     		CODE           	0127	0000	11
+		_ISR           		CODE           	0004	0000	25
+		_main          		CODE           	0038	0000	219
+		_DataWrite     		CODE           	0156	0000	11
+		_DataRead      		CODE           	0113	0000	43
 
-main.c estimated size: 259
+main.c estimated size: 298
 

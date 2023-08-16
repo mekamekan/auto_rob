@@ -35,6 +35,8 @@
 
 #define _XTAL_FREQ 32000000
 #include <xc.h>
+#include <conio.h>
+#include <stdio.h>
 
 void motorA(int duty);
 void motorB(int duty);
@@ -46,7 +48,12 @@ unsigned int switchB_Read(void);
 unsigned int switchC_Read(void);
 void Servo5(double angle);
 void Servo12(double angle);
-
+void DataWrite(unsigned char data);
+void putch(unsigned char data);
+void __interrupt() ISR(void);
+//グローバル変数
+unsigned char g_ReadData;
+//unsigned char g_ReadStr[20];
 
 void main(void) {
     //システム周波数設定
@@ -110,7 +117,7 @@ void main(void) {
     PWM5OFCON = 0x00;
     PWM5PHH = 0x00;
     PWM5PHL = 0x00;
-    PWM5DCH = (2899 >> 8) & 0x00FF;
+    PWM5DCH = (2899 >> 8) & 0x00FF; //初期位置設定
     PWM5DCL = 2899 & 0x00FF;
     PWM5PRH = (39999 >> 8) & 0x00FF;
     PWM5PRL = 39999 & 0x00FF;
@@ -128,7 +135,7 @@ void main(void) {
     PWM6OFCON = 0x00;
     PWM6PHH = 0x00;
     PWM6PHL = 0x00;
-    PWM6DCH = (2999 >> 8) & 0x00FF;
+    PWM6DCH = (2999 >> 8) & 0x00FF; //初期位置設定
     PWM6DCL = 2999 & 0x00FF;
     PWM6PRH = (39999 >> 8) & 0x00FF;
     PWM6PRL = 39999 & 0x00FF;
@@ -137,6 +144,22 @@ void main(void) {
     PWM6TMRH = 0x00;
     PWM6TMRL = 0x00;
     
+    //EUSART設定
+    RXPPS = 0b001101;
+    RB4PPS = 0b100100;
+    TX1STA = 0b00100100;
+    RC1STA = 0b10010000;
+    BAUD1CON = 0b00001000;
+    SP1BRGL = 416 & 0x00FF;
+    SP1BRGH = (416 >> 8) & 0x00FF;
+    
+    PIR1bits.RCIF = 0;
+    PIE1bits.RCIE = 1;
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+    
+    //変数宣言
+    unsigned char str[] = "Please enter a string\r\n";
     while(1){
         
         //モータ＆スイッチテスト用プログラム
@@ -174,7 +197,7 @@ void main(void) {
         }*/
         
         //サーボテスト用プログラム
-        for(int i = 0; i <= 270; i++){
+        /*for(int i = 0; i <= 270; i++){
             Servo5(i);
             Servo12(i);
             __delay_ms(100);
@@ -183,7 +206,14 @@ void main(void) {
             Servo5(i);
             Servo12(i);
             __delay_ms(100);
+        }*/
+        
+        //EUSARTテスト用プログラム
+        for(int i = 0; str[i] != NULL; i++){
+            DataWrite(str[i]);
         }
+        DataWrite(g_ReadData);
+        __delay_ms(100);
           
     }
     return;
@@ -360,4 +390,33 @@ void Servo12(double angle){
     PWM6LDCONbits.LDA = 1;
     
     return;
+}
+
+void DataWrite(unsigned char data){
+    while(!PIR1bits.TXIF);
+    PIR1bits.TXIF = 0;
+    TX1REG = data;
+    
+    return;
+}
+
+void putch(unsigned char data){
+    
+    DataWrite(data);
+    
+    return;
+}
+
+void __interrupt() ISR(void){
+    if(PIR1bits.RCIF){
+        PIR1bits.RCIF = 0;
+        if(RC1STAbits.FERR || RC1STAbits.OERR){
+            RC1STA = 0x00;
+            RC1STA = 0x90;
+        }
+        else{
+            g_ReadData = RC1REG;
+        }
+    }
+    else;
 }

@@ -19650,11 +19650,12 @@ unsigned int switchC_Read(void);
 void Servo5(double angle);
 void Servo12(double angle);
 void DataWrite(unsigned char data);
+void DataRead(void);
 void putch(unsigned char data);
 void __attribute__((picinterrupt(("")))) ISR(void);
 
 unsigned char g_ReadData;
-
+unsigned char g_ReadStr[20];
 
 void main(void) {
 
@@ -19755,18 +19756,20 @@ void main(void) {
     SP1BRGH = (416 >> 8) & 0x00FF;
 
     PIR1bits.RCIF = 0;
-    PIE1bits.RCIE = 1;
+
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
 
 
     unsigned char str[] = "Please enter a string\r\n";
     while(1){
-# 212 "main.c"
+# 213 "main.c"
         for(int i = 0; str[i] != ((void*)0); i++){
             DataWrite(str[i]);
         }
-        DataWrite(g_ReadData);
+        DataRead();
+
+
         _delay((unsigned long)((100)*(32000000/4000.0)));
 
     }
@@ -19952,6 +19955,24 @@ void DataWrite(unsigned char data){
     TX1REG = data;
 
     return;
+}
+
+void DataRead(void){
+
+    for(int i = 0; g_ReadStr[i] != 0x0a; i++){
+        while(!PIR1bits.RCIF);
+        PIR1bits.RCIF = 0;
+        if(RC1STAbits.FERR || RC1STAbits.OERR){
+            RC1STA = 0x00;
+            RC1STA = 0x90;
+        }
+        else{
+            g_ReadStr[i] = RC1REG;
+        }
+    }
+
+    return;
+
 }
 
 void putch(unsigned char data){

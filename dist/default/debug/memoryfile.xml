@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\auto_rob.production.hex">
+  <executable name="dist/default/debug\auto_rob.debug.hex">
     <memory name="program">
       <units>words</units>
       <length>16384</length>
-      <used>310</used>
-      <free>16074</free>
+      <used>364</used>
+      <free>16020</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>2016</length>
-      <used>56</used>
-      <free>1960</free>
+      <used>77</used>
+      <free>1939</free>
     </memory>
   </executable>
 </project>
