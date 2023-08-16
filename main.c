@@ -50,6 +50,7 @@ void Servo5(double angle);
 void Servo12(double angle);
 void DataWrite(unsigned char data);
 void putch(unsigned char data);
+unsigned int ADC_result(unsigned char ch);
 void __interrupt() ISR(void);
 //グローバル変数
 unsigned char g_ReadData;
@@ -158,6 +159,10 @@ void main(void) {
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
     
+    //ADC設定
+    ADCON0 = 0b10101100;
+    ADCON1 = 0b10100000;
+    
     //変数宣言
     unsigned char str[] = "Please enter a string\r\n";
     while(1){
@@ -209,11 +214,14 @@ void main(void) {
         }*/
         
         //EUSARTテスト用プログラム
-        for(int i = 0; str[i] != NULL; i++){
+        /*for(int i = 0; str[i] != NULL; i++){
             DataWrite(str[i]);
         }
         DataWrite(g_ReadData);
-        __delay_ms(100);
+        __delay_ms(100);*/
+        
+        //ADCテスト用プログラム
+        printf("Vol:%u\r\n", ADC_result(9));
           
     }
     return;
@@ -405,6 +413,21 @@ void putch(unsigned char data){
     DataWrite(data);
     
     return;
+}
+
+unsigned int ADC_result(unsigned char ch){
+    
+    unsigned int adcValue;
+    
+    ADCON0bits.CHS = ch;
+    ADCON0bits.ADON = 1;
+    __delay_us(5);
+    ADCON0bits.GO = 1;
+    while(ADCON0bits.GO);
+    adcValue = ADRESL + (256 * ADRESH);
+    ADCON0bits.ADON = 0;
+    return adcValue;
+    
 }
 
 void __interrupt() ISR(void){

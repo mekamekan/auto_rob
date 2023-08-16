@@ -19651,6 +19651,7 @@ void Servo5(double angle);
 void Servo12(double angle);
 void DataWrite(unsigned char data);
 void putch(unsigned char data);
+unsigned int ADC_result(unsigned char ch);
 void __attribute__((picinterrupt(("")))) ISR(void);
 
 unsigned char g_ReadData;
@@ -19760,14 +19761,14 @@ void main(void) {
     INTCONbits.GIE = 1;
 
 
+    ADCON0 = 0b10101100;
+    ADCON1 = 0b10100000;
+
+
     unsigned char str[] = "Please enter a string\r\n";
     while(1){
-# 212 "main.c"
-        for(int i = 0; str[i] != ((void*)0); i++){
-            DataWrite(str[i]);
-        }
-        DataWrite(g_ReadData);
-        _delay((unsigned long)((100)*(32000000/4000.0)));
+# 224 "main.c"
+        printf("Vol:%u\r\n", ADC_result(9));
 
     }
     return;
@@ -19959,6 +19960,21 @@ void putch(unsigned char data){
     DataWrite(data);
 
     return;
+}
+
+unsigned int ADC_result(unsigned char ch){
+
+    unsigned int adcValue;
+
+    ADCON0bits.CHS = ch;
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((5)*(32000000/4000000.0)));
+    ADCON0bits.GO = 1;
+    while(ADCON0bits.GO);
+    adcValue = ADRESL + (256 * ADRESH);
+    ADCON0bits.ADON = 0;
+    return adcValue;
+
 }
 
 void __attribute__((picinterrupt(("")))) ISR(void){
