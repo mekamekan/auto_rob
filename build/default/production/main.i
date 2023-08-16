@@ -19656,6 +19656,8 @@ unsigned int sensorA_Read(void);
 unsigned int sensorB_Read(void);
 unsigned int sensorC_Read(void);
 unsigned int sensorD_Read(void);
+void LEDON(void);
+void LEDOFF(void);
 void __attribute__((picinterrupt(("")))) ISR(void);
 
 unsigned char g_ReadData;
@@ -19771,9 +19773,43 @@ void main(void) {
 
     unsigned char str[] = "Please enter a string\r\n";
     while(1){
-# 228 "main.c"
-        printf("Vol:%u\r\n", sensorC_Read());
 
+
+        for(int i = -600; i <= 600; i++){
+
+            if(switchC_Read()){
+                motorA(i);
+                motorB(i);
+                motorD(i);
+                motorC(i);
+            }
+            else{
+                motorA(0);
+                motorB(0);
+                motorD(0);
+                motorC(0);
+            }
+            LEDON();
+            _delay((unsigned long)((10)*(32000000/4000.0)));
+        }
+        for(int i = 600; i >= -600; i--){
+
+            if(PushSwitchRead()){
+                motorA(i);
+                motorB(i);
+                motorD(i);
+                motorC(i);
+            }
+            else{
+                motorA(0);
+                motorB(0);
+                motorD(0);
+                motorC(0);
+            }
+            LEDOFF();
+            _delay((unsigned long)((10)*(32000000/4000.0)));
+        }
+# 235 "main.c"
     }
     return;
 }
@@ -19995,6 +20031,16 @@ unsigned int sensorC_Read(void){
 
 unsigned int sensorD_Read(void){
     return ADC_result(9);
+}
+
+void LEDON(void){
+    LATCbits.LATC6 = 1;
+    return;
+}
+
+void LEDOFF(void){
+    LATCbits.LATC6 = 0;
+    return;
 }
 
 void __attribute__((picinterrupt(("")))) ISR(void){

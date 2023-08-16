@@ -55,6 +55,8 @@ unsigned int sensorA_Read(void);
 unsigned int sensorB_Read(void);
 unsigned int sensorC_Read(void);
 unsigned int sensorD_Read(void);
+void LEDON(void);
+void LEDOFF(void);
 void __interrupt() ISR(void);
 //グローバル変数
 unsigned char g_ReadData;
@@ -171,8 +173,8 @@ void main(void) {
     unsigned char str[] = "Please enter a string\r\n";
     while(1){
         
-        //モータ＆スイッチテスト用プログラム
-        /*for(int i = -600; i <= 600; i++){
+        //モータ&スイッチ&LEDテスト用プログラム
+        for(int i = -600; i <= 600; i++){
  
             if(switchC_Read()){
                 motorA(i);
@@ -186,6 +188,7 @@ void main(void) {
                 motorD(0);
                 motorC(0);
             }
+            LEDON();
             __delay_ms(10);
         }
         for(int i = 600; i >= -600; i--){
@@ -202,11 +205,13 @@ void main(void) {
                 motorD(0);
                 motorC(0);
             }
+            LEDOFF();
             __delay_ms(10);
-        }*/
+        }
         
         //サーボテスト用プログラム
-        /*for(int i = 0; i <= 270; i++){
+        /*
+         * 3for(int i = 0; i <= 270; i++){
             Servo5(i);
             Servo12(i);
             __delay_ms(100);
@@ -225,7 +230,7 @@ void main(void) {
         __delay_ms(100);*/
         
         //ADCテスト用プログラム
-        printf("Vol:%u\r\n", sensorC_Read());
+        //printf("Vol:%u\r\n", sensorC_Read());
           
     }
     return;
@@ -448,6 +453,16 @@ unsigned int sensorC_Read(void){
 
 unsigned int sensorD_Read(void){
     return ADC_result(9);
+}
+
+void LEDON(void){
+    LATCbits.LATC6 = 1;
+    return;
+}
+
+void LEDOFF(void){
+    LATCbits.LATC6 = 0;
+    return;
 }
 
 void __interrupt() ISR(void){
