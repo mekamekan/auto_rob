@@ -19652,6 +19652,10 @@ void Servo12(double angle);
 void DataWrite(unsigned char data);
 void putch(unsigned char data);
 unsigned int ADC_result(unsigned char ch);
+unsigned int sensorA_Read(void);
+unsigned int sensorB_Read(void);
+unsigned int sensorC_Read(void);
+unsigned int sensorD_Read(void);
 void __attribute__((picinterrupt(("")))) ISR(void);
 
 unsigned char g_ReadData;
@@ -19767,8 +19771,8 @@ void main(void) {
 
     unsigned char str[] = "Please enter a string\r\n";
     while(1){
-# 224 "main.c"
-        printf("Vol:%u\r\n", ADC_result(9));
+# 228 "main.c"
+        printf("Vol:%u\r\n", sensorC_Read());
 
     }
     return;
@@ -19975,6 +19979,22 @@ unsigned int ADC_result(unsigned char ch){
     ADCON0bits.ADON = 0;
     return adcValue;
 
+}
+
+unsigned int sensorA_Read(void){
+    return ADC_result(12);
+}
+
+unsigned int sensorB_Read(void){
+    return ADC_result(10);
+}
+
+unsigned int sensorC_Read(void){
+    return ADC_result(8);
+}
+
+unsigned int sensorD_Read(void){
+    return ADC_result(9);
 }
 
 void __attribute__((picinterrupt(("")))) ISR(void){

@@ -9,12 +9,12 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 3h		(dist/default/production\auto_rob.production.hex)
-  8h - 901h		(dist/default/production\auto_rob.production.hex)
+  8h - 911h		(dist/default/production\auto_rob.production.hex)
   10000h - 10007h		(dist/default/production\auto_rob.production.hex)
   1000Eh - 10011h		(dist/default/production\auto_rob.production.hex)
  Unused ranges:
   4h - 7h
-  902h - FFFFh
+  912h - FFFFh
   10008h - 1000Dh
 
 ### Hex Memory Map ###
@@ -168,7 +168,8 @@
 000008D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000008E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000008F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00000900 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
+00000900 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000910 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
 00010000 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- H1 H1
 00010010 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
