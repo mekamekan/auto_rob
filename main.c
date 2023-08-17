@@ -42,6 +42,7 @@ void motorA(int duty);
 void motorB(int duty);
 void motorC(int duty);
 void motorD(int duty);
+void motorE(int duty);
 unsigned int PushSwitchRead(void); 
 unsigned int switchA_Read(void);
 unsigned int switchB_Read(void);
@@ -60,7 +61,6 @@ void LEDOFF(void);
 void __interrupt() ISR(void);
 //グローバル変数
 unsigned char g_ReadData;
-//unsigned char g_ReadStr[20];
 
 void main(void) {
     //システム周波数設定
@@ -68,10 +68,10 @@ void main(void) {
     
     //IO設定
     ANSELA = 0x00;
-    ANSELB = 0b00001111;
+    ANSELB = 0b00000111;
     ANSELC = 0x00;
     TRISA = 0b00001111;
-    TRISB = 0b00101111;
+    TRISB = 0b00100111;
     TRISC = 0x00;
     LATA = 0x00;
     LATB = 0x00;
@@ -96,7 +96,7 @@ void main(void) {
     PWM3DCL = 0x00;
     
     //PWM4設定
-    RA7PPS = 0b011010;
+    RA6PPS = 0b011010;
     PWM4CON = 0b10000000;
     CCPTMRS2bits.P4TSEL = 0b00;
     PWM4DCH = 0x00;
@@ -115,6 +115,14 @@ void main(void) {
     CCPTMRS1bits.C1TSEL = 0b00;
     CCPR1H = 0x00;
     CCPR1L = 0x00;
+    
+    //CCP2(PWM利用)設定
+    RC7PPS = 0b010110;
+    CCP2CON = 0b10011100;
+    CCPTMRS1bits.C2TSEL = 0b00;
+    CCPR2H = 0x00;
+    CCPR2L = 0x00;
+    
     
     //PWM5(16bit)設定
     RC5PPS = 0b011101;
@@ -177,16 +185,18 @@ void main(void) {
         for(int i = -600; i <= 600; i++){
  
             if(switchC_Read()){
-                motorA(i);
+                //motorA(i);
                 motorB(i);
                 motorD(i);
                 motorC(i);
+                motorE(i);
             }
             else{
                 motorA(0);
                 motorB(0);
                 motorD(0);
                 motorC(0);
+                motorE(i);
             }
             LEDON();
             __delay_ms(10);
@@ -194,16 +204,18 @@ void main(void) {
         for(int i = 600; i >= -600; i--){
             
             if(PushSwitchRead()){
-                motorA(i);
+                //motorA(i);
                 motorB(i);
                 motorD(i);
-                motorC(i);
+                //motorC(i);
+                motorE(i);
             }
             else{
                 motorA(0);
                 motorB(0);
                 motorD(0);
                 motorC(0);
+                motorE(i);
             }
             LEDOFF();
             __delay_ms(10);
@@ -211,7 +223,7 @@ void main(void) {
         
         //サーボテスト用プログラム
         /*
-         * 3for(int i = 0; i <= 270; i++){
+        3for(int i = 0; i <= 270; i++){
             Servo5(i);
             Servo12(i);
             __delay_ms(100);
@@ -242,6 +254,37 @@ void motorA(int duty){
     duty < -600 ? (duty = 600) : duty;
     
     if(duty > 0){
+        CCPR2L = (duty << 8) & 0x00FF;
+        CCPR2H = (duty >> 2) & 0x00FF;
+        RC7PPS = 0b010110;
+        RB3PPS = 0x00;
+        LATBbits.LATB3 = 0;
+    }
+    else if(duty < 0){
+        duty *= -1;
+        CCPR2L = (duty << 8) & 0x00FF;
+        CCPR2H = (duty >> 2) & 0x00FF;
+        RB3PPS = 0b010110;
+        RC7PPS = 0x00;
+        LATCbits.LATC7 = 0;
+    }
+    else{
+        RB3PPS = 0x00;
+        RC7PPS = 0x00;
+        LATBbits.LATB3 = 0;
+        LATCbits.LATC7 = 0;
+    }
+    
+    return;
+    
+}
+
+void motorB(int duty){
+    
+    duty > 600 ? (duty = 600) : duty;
+    duty < -600 ? (duty = 600) : duty;
+    
+    if(duty > 0){
         PWM3DCL = (duty << 8) & 0x00FF;
         PWM3DCH = (duty >> 2) & 0x00FF;
         RA5PPS = 0b011001;
@@ -267,7 +310,7 @@ void motorA(int duty){
     
 }
 
-void motorB(int duty){
+void motorC(int duty){
     
     duty > 600 ? (duty = 600) : duty;
     duty < -600 ? (duty = 600) : duty;
@@ -275,17 +318,17 @@ void motorB(int duty){
     if(duty > 0){
         PWM4DCL = (duty << 8) & 0x00FF;
         PWM4DCH = (duty >> 2) & 0x00FF;
-        RA7PPS = 0b011010;
-        RA6PPS = 0x00;
-        LATAbits.LATA6 = 0;
+        RA6PPS = 0b011010;
+        RA7PPS = 0x00;
+        LATAbits.LATA7 = 0;
     }
     else if(duty < 0){
         duty *= -1;
         PWM4DCL = (duty << 8) & 0x00FF;
         PWM4DCH = (duty >> 2) & 0x00FF;
-        RA6PPS = 0b011010;
-        RA7PPS = 0x00;
-        LATAbits.LATA7 = 0;
+        RA7PPS = 0b011010;
+        RA6PPS = 0x00;
+        LATAbits.LATA6 = 0;
     }
     else{
         RA6PPS = 0x00;
@@ -298,7 +341,7 @@ void motorB(int duty){
     
 }
 
-void motorC(int duty){
+void motorD(int duty){
     
     duty > 600 ? (duty = 600) : duty;
     duty < -600 ? (duty = 600) : duty;
@@ -329,7 +372,7 @@ void motorC(int duty){
     
 }
 
-void motorD(int duty){
+void motorE(int duty){
     
     duty > 600 ? (duty = 600) : duty;
     duty < -600 ? (duty = 600) : duty;
@@ -451,9 +494,9 @@ unsigned int sensorC_Read(void){
     return ADC_result(8);
 }
 
-unsigned int sensorD_Read(void){
+/*unsigned int sensorD_Read(void){
     return ADC_result(9);
-}
+}*/
 
 void LEDON(void){
     LATCbits.LATC6 = 1;
